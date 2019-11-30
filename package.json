@@ -1,0 +1,21 @@
+{
+  "name": "donationcontrol",
+  "version": "1.0.0",
+  "description": "API para controlar o recebimento de doacoes de alimentos industrializados por instituicoes de caridade\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dde uma\u001b[2~ \u001b[2~ins\u001b[2~tuicao \u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aline Sena",
+  "license": "ISC",
+  "dependencies": {
+    "apidoc": "^0.18.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.10",
+    "mongose": "0.0.2-security"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
