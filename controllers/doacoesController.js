@@ -27,10 +27,41 @@ exports.getDoacoes = (req, res) => {
 }
 
 
+exports.getById = (req, res) => {
+  const doacaoId = req.params.id
 
+  model.findById(doacaoId, function (err, doacao) {
+    if (err) return res.status(500).send(err);
+    if (!doacao) {
+      return res.status(200).send({ message: `Infelizmente não localizamos a doacao de id: ${doacaoId}` });
+    }
+    res.status(200).send(doacao);
+  })
+}
+
+
+
+exports.getVencimento = (req, res) => {
+  const hoje = new Date();
+  const hojeMili = hoje.setDate(hoje.getDate());
+  const vencMax10d = hoje.setDate(hoje.getDate()+10);
+
+  model.find(function (err, prods) {
+    if (err) res.status(500).send(err)    
+
+    const ab = prods.vencimento
+    const n = prods.filter(aluna => { return (aluna.vencimento.setDate(aluna.vencimento.getDate() )) < vencMax10d})
+  
+    res.status(200).send(n);  
+    
+  })
+
+}
+    
+    
 exports.updateDoacoes = (req, res) => {
     model.update(
-      { id: req.params.id },
+      { _id: req.params.id },
       { $set: req.body },
       { upsert: true},
       function (err) {
@@ -48,15 +79,15 @@ const validaFormulario = (campos) => {
 
 
 exports.deleteDoacoes = (req, res) => {
-  const id = req.params.id;
+  const doacaoId = req.params.id;
 
-  model.findOne({ id }, function(err, doacoes){
+  model.findById(doacaoId, function (err, doacao){
     if (err) res.status(500).send(err);
 
-    if (!doacoes){
+    if (!doacao){
       return res.status(200).send({ message: "Infelizmente essa doacao não foi encontrada!!!"});
     }
-    doacoes.remove(function(err){
+    doacao.remove(function(err){
       if(!err) {
         res.status(200).send({ message: "Doacao removido com sucesso!!!"});
       }
@@ -64,8 +95,5 @@ exports.deleteDoacoes = (req, res) => {
     
   })
 }
-
-
-
 
 

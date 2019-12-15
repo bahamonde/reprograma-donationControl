@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 //INSTANCIANDO UM NOVO SCHEMA(MODELO) caracteristicas q o objeto vai possuir
 const doacoesSchema = new mongoose.Schema({
-    id: {type: Number}, //faz esse campo ser obrigatorio 
     produto: {type: String},
     marca: {type: String},
     vencimento: {type: Date},

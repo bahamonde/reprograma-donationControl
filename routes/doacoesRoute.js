@@ -14,7 +14,7 @@ const controller = require("../controllers/doacoesController")
  *     
  *       "produto": "Maionese ",
  *       "marca": "Helmans"
- *       "vencimento": "2019-12-03T03:00:00.000Z",
+ *       "vencimento": "2019-12-03",
  *       "quantidade": 10,
  *       "sabor": [{
  *          tipo:"salgado"
@@ -26,6 +26,9 @@ const controller = require("../controllers/doacoesController")
 
 router.post("/", controller.postDoacoes)
 router.get("/", controller.getDoacoes)
+
+router.get("/vencimentorapido", controller.getVencimento)
+router.get("/:id", controller.getById)
 // router.get("/compradores", controller.getCompradores)
 // router.get("/:cpf", controller.getCPF)  //é um param pq vc ta esperando receber esse parametro
 router.put("/:id", controller.updateDoacoes)
