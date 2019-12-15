@@ -49,8 +49,9 @@ exports.getVencimento = (req, res) => {
   model.find(function (err, prods) {
     if (err) res.status(500).send(err)    
 
-    const vencimento = prods.vencimento
-    const prodProxVenc = prods.filter(produto => { return (produto.vencimento.setDate(produto.vencimento.getDate() )) < vencMax10d})
+    const prodProxVenc = prods.filter(produto => { 
+      return (produto.vencimento.setDate(produto.vencimento.getDate() )) <= vencMax10d && 
+      produto.vencimento.setDate(produto.vencimento.getDate() ) >= hojeMili})
   
     res.status(200).send(prodProxVenc);  
     
