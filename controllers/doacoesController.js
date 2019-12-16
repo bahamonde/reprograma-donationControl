@@ -2,6 +2,8 @@ const model = require('../model/doacoes') //coloca esse para puxar do bdd pq os 
 
 const fs = require('fs');
 
+
+
 exports.postDoacoes = (req, res) => {
   let doacoes = new model(req.body); //pega as informaçoes do body da requisicao e modela um novo pacote
 
@@ -10,7 +12,7 @@ exports.postDoacoes = (req, res) => {
     else {
       res.status(201).send({
         status: true,
-        mensagem: "Doacoes incluida com sucesso"
+        mensagem: "Doacao incluida com sucesso"
       });
     };
   });
@@ -56,9 +58,24 @@ exports.getVencimento = (req, res) => {
     res.status(200).send(prodProxVenc);  
     
   })
-
 }
+
+
+exports.getVencidos = (req, res) => {
+  const hoje = new Date();
+  const hojeMili = hoje.setDate(hoje.getDate());
+  
+  model.find(function (err, prods) {
+    if (err) res.status(500).send(err)    
+
+    const prodVencidos = prods.filter(produto => { 
+      return (produto.vencimento.setDate(produto.vencimento.getDate() )) <= hojeMili})
+  
+    res.status(200).send(prodVencidos);  
     
+  })
+}
+
     
 exports.updateDoacoes = (req, res) => {
     model.update(
@@ -90,7 +107,7 @@ exports.deleteDoacoes = (req, res) => {
     }
     doacao.remove(function(err){
       if(!err) {
-        res.status(200).send({ message: "Doacao removido com sucesso!!!"});
+        res.status(200).send({ message: "Doacao removida com sucesso!!!"});
       }
     }) 
     

@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "8392a30f-e258-4187-8bcf-e2b3e6213e50",
+		"name": "Doacoes ",
+		"description": "Metodos da API de doações feita como projeto final do curso de backend da Reprograma em parceria com o Mercado Livre.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/doacoes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"produto\": \"Suco de Uva\",\n    \"marca\": \"Ades\",\n    \"vencimento\": \"2019-12-26\",\n    \"quantidade\": 6,\n    \"sabor\": [{\n    \t\"tipo\":\"Doce\"\n    }]\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/doacoes",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"doacoes"
+					]
+				},
+				"description": "Para adicionar uma nova doação."
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/doacoes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/doacoes",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"doacoes"
+					]
+				},
+				"description": "Para buscar todas as doações que estão salvas no banco de dados."
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/doacoes/vencimentorapido",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/doacoes/vencimentorapido",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"doacoes",
+						"vencimentorapido"
+					]
+				},
+				"description": "Retorna os produtos que vencerão em até 10 dias."
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/doacoes/vencidos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/doacoes/vencidos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"doacoes",
+						"vencidos"
+					]
+				},
+				"description": "Retorna os produtos em estoque que já ultrapassou o prazo de validade"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/doacoes/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n      \r\n        \"produto\": \"Catchup\",\r\n        \"marca\": \"Quero\",\r\n        \"vencimento\": \"2019-12-17T00:00:00.000Z\",\r\n        \"quantidade\": 5,\r\n        \"sabor\": [\r\n            {\r\n                \"tipo\": \"Salgado\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/doacoes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"doacoes",
+						""
+					]
+				},
+				"description": "Altera algum dado do Objeto selecionado pelo _id"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/doacoes/",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/doacoes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"doacoes",
+						""
+					]
+				},
+				"description": "Deleta doação pelo _id"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
